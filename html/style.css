@@ -2,7 +2,14 @@ body {
   font-family: Georgia, serif;
   background:
     linear-gradient(rgba(248, 248, 248, 0.6), rgba(248, 248, 248, 0.6)),
-    url('background.jpg') center center / cover no-repeat fixed;
+    image-set(
+      url('background.webp') type('image/webp'),
+      url('background.jpg') type('image/jpeg')
+    );
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #222;
   padding: 4rem;
 }

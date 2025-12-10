@@ -6,12 +6,12 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTPS router serving both apex and www, terminates TLS
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${HOST_URL}`,`${HOST_URL_WWW}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${HOST_URL}`) || Host(`${HOST_URL_WWW}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.tls=true"
       # HTTP router redirects both hosts to HTTPS
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.rule=Host(`${HOST_URL}`,`${HOST_URL_WWW}`)"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.entrypoints=web,websecure"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.rule=Host(`${HOST_URL}`) || Host(`${HOST_URL_WWW}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.entrypoints=web"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.middlewares=redirect-to-https-${COMPOSE_PROJECT_NAME}"
       - "traefik.http.middlewares.redirect-to-https-${COMPOSE_PROJECT_NAME}.redirectscheme.scheme=https"
 

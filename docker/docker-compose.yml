@@ -9,6 +9,7 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${HOST_URL}`) || Host(`${HOST_URL_WWW}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.tls=true"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.tls.certresolver=${CERT_RESOLVER}"
       # HTTP router redirects both hosts to HTTPS
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.rule=Host(`${HOST_URL}`) || Host(`${HOST_URL_WWW}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-redirect.entrypoints=web"

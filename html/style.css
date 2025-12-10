@@ -1,11 +1,10 @@
 body {
   font-family: Georgia, serif;
-  background: url('background.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background:
+    linear-gradient(rgba(248, 248, 248, 0.6), rgba(248, 248, 248, 0.6)),
+    url('background.jpg') center center / cover no-repeat fixed;
   color: #222;
   padding: 4rem;
-  background-blend-mode: lighten;
-  background-color: #f8f8f8aa;
 }
 
 .container {
